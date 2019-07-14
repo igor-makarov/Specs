@@ -4,5 +4,6 @@ source 'https://rubygems.org'
 
 ruby '> 2.0.0'
 
-gem 'cocoapods', '~> 1.7'
+gem 'cocoapods'
+gem 'concurrent-ruby'
 gem 'rubocop'

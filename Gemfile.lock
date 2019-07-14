@@ -85,7 +85,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods (~> 1.7)
+  cocoapods
+  concurrent-ruby
   rubocop
 
 RUBY VERSION
