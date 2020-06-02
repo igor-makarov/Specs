@@ -1,3 +1,9 @@
 [build]
   command = "Scripts/netlify_deploy.sh"
   publish = "_site"
+[[redirects]]
+  from = "/Specs/*"
+  to = "https://raw.githubusercontent.com/CocoaPods/Specs/master/Specs/:splat"
+  status = 200
+  force = true
+  headers = {Cache-Control = "max-age=3600"}
