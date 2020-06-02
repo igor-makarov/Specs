@@ -7,7 +7,7 @@ mkdir _site || true
 bundle exec ruby Scripts/create_pods_and_versions_index.rb _site
 
 # add redirects
-cp Scripts/netlify_redirects.txt _site/_redirects
-cat _site/deprecated_pod_redirects.txt >> _site/_redirects
+cat _site/deprecated_pod_redirects.txt > _site/_redirects
+cat Scripts/netlify_redirects.txt >> _site/_redirects
 
 cp ./*.yml _site/
