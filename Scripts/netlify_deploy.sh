@@ -6,7 +6,8 @@ mkdir _site || true
 # generate sharded index
 bundle exec ruby Scripts/create_pods_and_versions_index.rb _site
 
-# add redirects to GitHub
-cat Scripts/netlify_redirects.txt >> _site/_redirects
+# add redirects
+cp Scripts/netlify_redirects.txt _site/_redirects
+cat _site/deprecated_pod_redirects.txt >> _site/_redirects
 
 cp ./*.yml _site/

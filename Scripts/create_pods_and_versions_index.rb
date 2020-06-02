@@ -46,10 +46,14 @@ File.open("#{ARGV[0]}/deprecated_podspecs.txt", 'w') do |file|
   end
 end
 
-# write a list of all deprecated podspecs as proxy redirects
-File.open("#{ARGV[0]}/_redirects", 'w') do |file|
-  deprecated_podspecs.each do |podspec_path|
-    file.puts "/#{podspec_path}   https://raw.githubusercontent.com/CocoaPods/Specs/master/#{podspec_path}   200"
+# write a list of all deprecated pods as proxy redirects
+deprecated_pods = deprecated_podspecs.map do |podspec_path|
+  podspec_path.split('/')[0...-2].join('/')
+end.uniq.sort
+
+File.open("#{ARGV[0]}/deprecated_pod_redirects.txt", 'w') do |file|
+  deprecated_pods.each do |pod_path|
+    file.puts "/#{pod_path}/*   https://raw.githubusercontent.com/CocoaPods/Specs/master/#{pod_path}/:splat   200"
   end
 end
 
