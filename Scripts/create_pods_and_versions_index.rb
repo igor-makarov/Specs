@@ -45,4 +45,12 @@ File.open("#{ARGV[0]}/deprecated_podspecs.txt", 'w') do |file|
     file.puts podspec_path
   end
 end
+
+# write a list of all deprecated podspecs as proxy redirects
+File.open("#{ARGV[0]}/_redirects", 'w') do |file|
+  deprecated_podspecs.each do |podspec_path|
+    file.puts "/#{podspec_path}   https://raw.githubusercontent.com/CocoaPods/Specs/master/#{podspec_path}   200"
+  end
+end
+
 STDERR.puts "Deprecated podspec count: #{deprecated_podspecs.count}"
